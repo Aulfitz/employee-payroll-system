@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $conn->prepare("INSERT INTO attendance
             (employee_id, date, time_in, time_out, status, late_minutes, remarks)
             VALUES (?,?,?,?,?,?,?)");
-        $stmt->bind_param("isssssi", $emp_id, $date, $time_in, $time_out, $status, $late_min, $remarks);
+        $stmt->bind_param("issssis", $emp_id, $date, $time_in, $time_out, $status, $late_min, $remarks);
     }
 
     if ($stmt->execute()) {
