@@ -31,9 +31,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         $stmt = $conn->prepare("INSERT INTO payroll
             (employee_id, period_id, base_salary, regular_hours, overtime_pay,
              total_bonus, total_deductions, payment_method, status, processed_by, processed_date)
-            VALUES (?,?,?,160,?,?,?,'Bank Transfer','Processed',?,NOW())");
-        $uid = $user['id'];
-        $stmt->bind_param("iidddd i", $emp_id, $period_id, $base, $overtime, $bonus, $deductions, $uid);
+            VALUES (?,?,?,160,?,?,?,?,'Processed',?,NOW())");
+        $uid = intval($user['id']);
+        $stmt->bind_param("iidddssi", $emp_id, $period_id, $base, $overtime, $bonus, $deductions, $method, $uid);
         if ($stmt->execute()) {
             $msg = "Payroll processed successfully!";
             $msgType = 'success';
