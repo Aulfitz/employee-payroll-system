@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
              total_bonus, total_deductions, payment_method, status, processed_by, processed_date)
             VALUES (?,?,?,160,?,?,?,?,'Processed',?,NOW())");
         $uid = intval($user['id']);
-        $stmt->bind_param("iidddssi", $emp_id, $period_id, $base, $overtime, $bonus, $deductions, $method, $uid);
+        $stmt->bind_param("iiddddsi", $emp_id, $period_id, $base, $overtime, $bonus, $deductions, $method, $uid);
         if ($stmt->execute()) {
             $msg = "Payroll processed successfully!";
             $msgType = 'success';
