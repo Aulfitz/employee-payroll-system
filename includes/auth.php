@@ -5,11 +5,9 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-
 function isLoggedIn() {
     return isset($_SESSION['user_id']) && !empty($_SESSION['user_id']);
 }
-
 function requireLogin() {
     if (!isLoggedIn()) {
         $depth = substr_count($_SERVER['PHP_SELF'], '/') - 2;
@@ -18,7 +16,6 @@ function requireLogin() {
         exit();
     }
 }
-
 function getCurrentUser() {
     return [
         'id'   => $_SESSION['user_id']   ?? null,
