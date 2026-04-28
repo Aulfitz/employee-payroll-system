@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             first_name=?, last_name=?, middle_name=?, email=?, contact_number=?,
             gender=?, birth_date=?, date_hired=?, department_id=?, position_id=?, address=?
             WHERE employee_id=?");
-        $stmt->bind_param("ssssssssiisi",
+        $stmt->bind_param("sssssssssiis",
             $first_name, $last_name, $middle_name, $email, $contact,
             $gender, $birth_date, $date_hired, $dept_id, $pos_id, $address, $id);
         if ($stmt->execute()) {
@@ -104,7 +104,7 @@ include '../includes/header.php';
         <div class="search-box">
             <form method="GET" style="display:flex;gap:8px;align-items:center">
                 <input type="text" name="search" class="search-input"
-                       placeholder="Search name, code, email…"
+                       placeholder="Search name, code, department…"
                        value="<?= htmlspecialchars($search) ?>">
                 <button type="submit" class="btn btn-primary btn-sm">🔍 Search</button>
                 <?php if ($search): ?>
